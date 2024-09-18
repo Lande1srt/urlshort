@@ -52,11 +52,11 @@ export async function onRequest(context) {
         'Access-Control-Allow-Headers': 'Content-Type',
         'Access-Control-Max-Age': '86400', // 24 hours
     };
-    if (!url) return Response.json({ message: 'Missing required parameter: url.' });
+    if (!url) return Response.json({ message: '链接缺少必要参数。' });
 
     // url格式检查
     if (!/^https?:\/\/.{3,}/.test(url)) {
-        return Response.json({ message: 'Illegal format: url.' },{
+        return Response.json({ message: '链接格式不正确。' },{
             headers: corsHeaders,
             status: 400
         })
@@ -64,7 +64,7 @@ export async function onRequest(context) {
 
     // 自定义slug长度检查 2<slug<10 是否不以文件后缀结尾
     if (slug && (slug.length < 2 || slug.length > 10 || /.+\.[a-zA-Z]+$/.test(slug))) {
-        return Response.json({ message: 'Illegal length: slug, (>= 2 && <= 10), or not ending with a file extension.' },{
+        return Response.json({ message: '非法的id长度[2-10]或未知的错误。' },{
             headers: corsHeaders,
             status: 400
         
@@ -90,7 +90,7 @@ export async function onRequest(context) {
 
             // slug 已存在
             if (existUrl) {
-                return Response.json({ message: 'Slug already exists.' },{
+                return Response.json({ message: '此id已存在。' },{
                     headers: corsHeaders,
                     status: 200  
                 })
@@ -111,7 +111,7 @@ export async function onRequest(context) {
         const bodyUrl = new URL(url);
 
         if (bodyUrl.hostname === originurl.hostname) {
-            return Response.json({ message: 'You cannot shorten a link to the same domain.' }, {
+            return Response.json({ message: '无法处理指向相同域名的链接。' }, {
                 headers: corsHeaders,
                 status: 400
             })
