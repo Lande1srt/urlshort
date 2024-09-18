@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="asset/img/favicon.png"  >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>short</title>
+    <link rel="icon" href="https://files-plus.coldsea.vip/app-files/slink/slink.png"  >
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Lande Slink</title>
     <style>
       :root {
         --color-primary: #5c7cfa;
@@ -203,21 +203,21 @@
     </style>
   </head>
   <body>
-    <header><h1>short</h1></header>
+    <header><h1>Space短链接服务</h1></header>
     <main x-data="app" x-cloak>
       <p x-show.transition.opacity="alert" :class="alert?.type" x-text="alert?.message"></p>
-      <input placeholder="输入要缩短的网址..." x-model="url" x-ref="url" />
+      <input placeholder="请输入要缩短的长链接..." x-model="url" x-ref="url" />
       <details>
-        <summary>自定义设置</summary>
+        <summary>自定义短链接id</summary>
         <div>
           <input placeholder="slug" x-model="slug" />
-          <small>Slug 默认是随机生成的短 id。</small>
+          <small>Slug默认随机生成id，在此输入id以生成指定id链接。</small>
         </div>
       </details>
       <button :class="{ loading }" :disabled="loading || isValidated()" @click="submit($refs, $nextTick)">生成</button>
     </main>
     <footer>
-     service
+     &copy; 2024 or <a href="https://vlstar.vip/" target="_blank" rel="noopener noreferrer">Lande</a>
     </footer>
     <script src="asset/js/alpine.js"></script>
     <script>
